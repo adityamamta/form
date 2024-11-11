@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*, *::after, *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 2.8rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.3rem;
+}
+
+.input-box {
+    height: 5.8rem;
+    width: 30rem;
+    background-color: gainsboro;
+    position: relative;
+}
+
+.shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+.input {
+    font-size: 1.6rem;
+    font-weight: 500;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: 2.5px solid black;
+    z-index: 99;
+    outline: none;
+    padding-left: 1.8rem;
+    transition: transform 0.3s ease;
+    &:focus, &:not(:placeholder-shown) {
+        transform: translate3d(-.6rem, -.6rem, 0);
+        padding-top: 1rem;
+        animation: jump-effect .3s;
+    }
+}
+
+@keyframes jump-effect {
+    0% {
+        transform: translate(0);
+    }
+    50% {
+        transform: translate(-.8rem, -.8rem);
+    }
+    70% {
+        transform: translate(-.6rem, -.6rem);
+    }
+}
+
+
+.input::placeholder {
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.input:focus::placeholder,
+.input:not(:placeholder-shown)::placeholder {
+    opacity: 0;
+}
+
+label {
+    position: absolute;
+    z-index: 999;
+    margin-left: 1.8rem;
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0;
+    transition-property: opacity, margin-top;;
+    transition-timing-function: ease;
+    transition-duration: .3s;
+    pointer-events: none;
+} 
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+    opacity: 1;
+    margin-left: 1.5rem;
+    margin-top: .4rem;
+}
+
+
+.btn-box {
+    width: fit-content;
+    background-color: gainsboro;
+    align-self: flex-end;
+    background-color: black;
+    .btn {
+        font-size: 1.6rem;
+        background-color: rgb(200, 142, 255);
+        padding-inline: 2.4rem;
+        padding-block: 1.6rem;
+        border: none;
+        cursor: pointer;
+        transition: transform .3s ease;
+        &:hover {
+            transform: translate3d(-.6rem, -.6rem, 0);
+        }
+    }
+}
